@@ -71,3 +71,17 @@ curl -X PATCH http://127.0.0.1:5000/lists/LIST_ID/items/ITEM_ID \
   -H "Content-Type: application/json" \
   -d '{"user_id": "USER_ID"}'
 ```
+
+### Windows / PowerShell notes
+
+The examples above use Mac/Linux shell syntax. On Windows:
+
+- Use `curl.exe`, not `curl` — in PowerShell, `curl` is an alias for `Invoke-WebRequest`, which truncates the response output.
+- Run each command as a **single line** — the trailing `\` line continuations above are Mac/Linux syntax and cause errors if pasted into PowerShell. Make sure to keep a space before each flag (` -H `, ` -d `) when joining lines.
+- Escape the inner double quotes in JSON bodies with backslashes:
+
+```powershell
+curl.exe -X PATCH http://127.0.0.1:5000/lists/LIST_ID/items/ITEM_ID -H "Content-Type: application/json" -d '{\"user_id\": \"USER_ID\"}'
+```
+
+(Git Bash users can run the Mac/Linux commands as written.)
